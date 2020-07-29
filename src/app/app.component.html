@@ -1,0 +1,51 @@
+
+  
+<h2 class="font-weight-bold text-center"> Image Analysis</h2>
+
+<div class="file has-name is-primary is-fullwidth ">
+  <label class="file-label">
+      <input
+        class="file-input"
+        type="file"
+        name="file"
+        #fileInput
+        (change)="onChange(fileInput.files[0])"
+      />
+  </label>
+</div>
+
+<div>
+  <figure class="image is-128x128">
+    <img [src]="imageUrl" id="abc"/>
+  </figure>
+
+  <button
+                type="button"
+                class="btn btn-success"
+                (click)="onSubmit()">analyze</button>
+
+<br/>
+<br/>
+  
+  <div>
+    <h4 *ngIf="loading==1">Analysing the image...</h4>
+  </div>
+
+  <div>
+    <h4 *ngIf="loading==4">Loading the image...</h4>
+  </div>
+
+  <div *ngIf="loading==3">
+    <h4>Results :</h4>
+    {{answer[0]|json}}
+  </div>
+
+  <div *ngIf="loading==2">
+    <h4 class="font-weight-light">Click analyze for results</h4>
+  </div>
+
+  <div *ngIf="loading==0">
+    <h4 class="font-weight-light">Loading Model please wait,will take time to download classifier...</h4>
+  </div>
+  
+</div>
